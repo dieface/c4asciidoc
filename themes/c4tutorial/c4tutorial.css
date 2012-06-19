@@ -9,7 +9,7 @@
 
 /* Default font. */
 body {
-  font-family: Georgia,"Times New Roman",Times,serif;
+  font-family: Helvetica,"Times New Roman",Times,serif;
 }
 
 /* Title font. */
@@ -438,3 +438,5 @@ th.tableblock.valign-middle, td.tableblock.valign-middle {
 th.tableblock.valign-bottom, td.tableblock.valign-bottom {
   vertical-align: bottom;
 }
+
+
