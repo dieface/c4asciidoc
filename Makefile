@@ -4,7 +4,7 @@
 
 .NOTPARALLEL:
 
-INSTALL = /usr/bin/install -c
+INSTALL = /opt/local/bin/ginstall -c
 INSTALL_PROG = ${INSTALL}
 INSTALL_DATA = ${INSTALL} -m 644
 PACKAGE_TARNAME = asciidoc
