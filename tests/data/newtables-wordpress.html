@@ -1,0 +1,1213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="AsciiDoc 8.6.8">
+<title>AsciiDoc New tables</title>
+</head>
+<body>
+<h1>AsciiDoc New tables</h1>
+<p>
+</p>
+<a name="preamble"></a>
+<p><strong>New in version 8.3.0</strong></p>
+<p>I&#8217;ve finally come up with a <em>new tables</em> syntax that I&#8217;m happy with
+and can at last remove this footnote from the <em>User Guide</em>: &#8220;The
+current table syntax is overly complicated and unwieldy to edit,
+hopefully a more usable syntax will appear in future versions of
+AsciiDoc.&#8221;</p>
+<table frame="void" bgcolor="#ffffee" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<p style="margin-top:0;"><b>Update</b></p>
+<p>The following additions were made at AsciiDoc 8.4.4:</p>
+<ul>
+<li>
+Cell column and row spanning.
+</li>
+<li>
+Styles can be applied per cell.
+</li>
+<li>
+Vertical cell alignment can be applied to columns and cells.
+</li>
+</ul>
+<p>See the examples at the end of this document.</p>
+</td></tr></table>
+<p>At first glance it doesn&#8217;t look much different to the old syntax but
+it&#8217;s a lot more flexible, easier to enter and supports a lot of column
+styles (for example the <em>asciidoc</em> style supports AsciiDoc block and
+inline elements).  The old tables syntax has been deprecated but is
+currently still processed.  Here are some examples of AsciiDoc <em>new
+tables</em>:</p>
+<div>
+<table rules="all"
+width="15%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 1. </b>Simple table</caption>
+<tbody>
+<tr>
+<td align="left" width="33%" valign="top"><div>1</div></td>
+<td align="left" width="33%" valign="top"><div>2</div></td>
+<td align="left" width="33%" valign="top"><div>A</div></td>
+</tr>
+<tr>
+<td align="left" width="33%" valign="top"><div>3</div></td>
+<td align="left" width="33%" valign="top"><div>4</div></td>
+<td align="left" width="33%" valign="top"><div>B</div></td>
+</tr>
+<tr>
+<td align="left" width="33%" valign="top"><div>5</div></td>
+<td align="left" width="33%" valign="top"><div>6</div></td>
+<td align="left" width="33%" valign="top"><div>C</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">[width="15%"]
+|=======
+|1 |2 |A
+|3 |4 |B
+|5 |6 |C
+|=======</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="40%"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 2. </b>Table with title, header and footer</caption>
+<thead>
+<tr>
+<th align="left" width="50%" valign="top">Column 1 </th>
+<th align="left" width="50%" valign="top">Column 2</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td align="left" width="50%" style="font-weight:bold" valign="top"><div>6</div></td>
+<td align="left" width="50%" style="font-weight:bold" valign="top"><div>Three items</div></td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td align="left" width="50%" valign="top"><div>1</div></td>
+<td align="left" width="50%" valign="top"><div>Item 1</div></td>
+</tr>
+<tr>
+<td align="left" width="50%" valign="top"><div>2</div></td>
+<td align="left" width="50%" valign="top"><div>Item 2</div></td>
+</tr>
+<tr>
+<td align="left" width="50%" valign="top"><div>3</div></td>
+<td align="left" width="50%" valign="top"><div>Item 3</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">.An example table
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Column 1 |Column 2
+|1        |Item 1
+|2        |Item 2
+|3        |Item 3
+|6        |Three items
+|======================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="50%"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 3. </b>Columns formatted with strong, monospaced and emphasis styles</caption>
+<thead>
+<tr>
+<th align="right" width="20%" valign="top">      </th>
+<th colspan="2" align="center" width="40%" valign="top">Columns 2 and 3</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td align="right" width="20%" style="font-weight:bold" valign="top"><div><strong>footer 1</strong></div></td>
+<td align="center" width="40%" style="font-weight:bold" valign="top"><div><code>footer 2</code></div></td>
+<td align="center" width="40%" style="font-weight:bold" valign="top"><div><em>footer 3</em></div></td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td align="right" width="20%" valign="top"><div><strong>1</strong></div></td>
+<td align="center" width="40%" valign="top"><div><code>Item 1</code></div></td>
+<td align="center" width="40%" valign="top"><div><em>Item 1</em></div></td>
+</tr>
+<tr>
+<td align="right" width="20%" valign="top"><div><strong>2</strong></div></td>
+<td align="center" width="40%" valign="top"><div><code>Item 2</code></div></td>
+<td align="center" width="40%" valign="top"><div><em>Item 2</em></div></td>
+</tr>
+<tr>
+<td align="right" width="20%" valign="top"><div><strong>3</strong></div></td>
+<td align="center" width="40%" valign="top"><div><code>Item 3</code></div></td>
+<td align="center" width="40%" valign="top"><div><em>Item 3</em></div></td>
+</tr>
+<tr>
+<td align="right" width="20%" valign="top"><div><strong>4</strong></div></td>
+<td align="center" width="40%" valign="top"><div><code>Item 4</code></div></td>
+<td align="center" width="40%" valign="top"><div><em>Item 4</em></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">.An example table
+[width="50%",cols="&gt;s,^2m,^2e",frame="topbot",options="header,footer"]
+|==========================
+|      2+|Columns 2 and 3
+|1       |Item 1  |Item 1
+|2       |Item 2  |Item 2
+|3       |Item 3  |Item 3
+|4       |Item 4  |Item 4
+|footer 1|footer 2|footer 3
+|==========================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 4. </b>A table with externally sourced CSV data</caption>
+<thead>
+<tr>
+<th align="center" width="11%" valign="top">ID</th>
+<th align="left" width="22%" valign="top">Customer Name</th>
+<th align="left" width="22%" valign="top">Contact Name</th>
+<th align="left" width="22%" valign="top">Customer Address</th>
+<th align="left" width="22%" valign="top">Phone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" width="11%" valign="top"><div>AROUT</div></td>
+<td align="left" width="22%" valign="top"><div>Around the Horn</div></td>
+<td align="left" width="22%" valign="top"><div>Thomas Hardy</div></td>
+<td align="left" width="22%" valign="top"><div>120 Hanover Sq.
+London</div></td>
+<td align="left" width="22%" valign="top"><div>(171) 555-7788</div></td>
+</tr>
+<tr>
+<td align="center" width="11%" valign="top"><div>BERGS</div></td>
+<td align="left" width="22%" valign="top"><div>Berglunds snabbkop</div></td>
+<td align="left" width="22%" valign="top"><div>Christina Berglund</div></td>
+<td align="left" width="22%" valign="top"><div>Berguvsvagen  8
+Lulea</div></td>
+<td align="left" width="22%" valign="top"><div>0921-12 34 65</div></td>
+</tr>
+<tr>
+<td align="center" width="11%" valign="top"><div>BLAUS</div></td>
+<td align="left" width="22%" valign="top"><div>Blauer See Delikatessen</div></td>
+<td align="left" width="22%" valign="top"><div>Hanna Moos</div></td>
+<td align="left" width="22%" valign="top"><div>Forsterstr. 57
+Mannheim</div></td>
+<td align="left" width="22%" valign="top"><div>0621-08460</div></td>
+</tr>
+<tr>
+<td align="center" width="11%" valign="top"><div>BLONP</div></td>
+<td align="left" width="22%" valign="top"><div>Blondel pere et fils</div></td>
+<td align="left" width="22%" valign="top"><div>Frederique Citeaux</div></td>
+<td align="left" width="22%" valign="top"><div>24, place Kleber
+Strasbourg</div></td>
+<td align="left" width="22%" valign="top"><div>88.60.15.31</div></td>
+</tr>
+<tr>
+<td align="center" width="11%" valign="top"><div>BOLID</div></td>
+<td align="left" width="22%" valign="top"><div>Bolido Comidas preparadas</div></td>
+<td align="left" width="22%" valign="top"><div>Martin Sommer</div></td>
+<td align="left" width="22%" valign="top"><div>C/ Araquil, 67
+Madrid</div></td>
+<td align="left" width="22%" valign="top"><div>(91) 555 22 82</div></td>
+</tr>
+<tr>
+<td align="center" width="11%" valign="top"><div>BONAP</div></td>
+<td align="left" width="22%" valign="top"><div>Bon app'</div></td>
+<td align="left" width="22%" valign="top"><div>Laurence Lebihan</div></td>
+<td align="left" width="22%" valign="top"><div>12, rue des Bouchers
+Marseille</div></td>
+<td align="left" width="22%" valign="top"><div>91.24.45.40</div></td>
+</tr>
+<tr>
+<td align="center" width="11%" valign="top"><div>BOTTM</div></td>
+<td align="left" width="22%" valign="top"><div>Bottom-Dollar Markets</div></td>
+<td align="left" width="22%" valign="top"><div>Elizabeth Lincoln</div></td>
+<td align="left" width="22%" valign="top"><div>23 Tsawassen Blvd.
+Tsawassen</div></td>
+<td align="left" width="22%" valign="top"><div>(604) 555-4729</div></td>
+</tr>
+<tr>
+<td align="center" width="11%" valign="top"><div>BSBEV</div></td>
+<td align="left" width="22%" valign="top"><div>B&#8217;s Beverages</div></td>
+<td align="left" width="22%" valign="top"><div>Victoria Ashworth</div></td>
+<td align="left" width="22%" valign="top"><div>Fauntleroy Circus
+London</div></td>
+<td align="left" width="22%" valign="top"><div>(171) 555-1212</div></td>
+</tr>
+<tr>
+<td align="center" width="11%" valign="top"><div>CACTU</div></td>
+<td align="left" width="22%" valign="top"><div>Cactus Comidas para llevar</div></td>
+<td align="left" width="22%" valign="top"><div>Patricio Simpson</div></td>
+<td align="left" width="22%" valign="top"><div>Cerrito 333
+Buenos Aires</div></td>
+<td align="left" width="22%" valign="top"><div>(1) 135-5555</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;"> [format="csv",cols="^1,4*2",options="header"]
+ |===================================================
+ ID,Customer Name,Contact Name,Customer Address,Phone
+ include::customers.csv[]
+ |===================================================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="70%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 5. </b>DVS formatted table</caption>
+<tbody>
+<tr>
+<td align="left" width="14%" valign="top"><div>root</div></td>
+<td align="left" width="14%" valign="top"><div>x</div></td>
+<td align="left" width="14%" valign="top"><div>0</div></td>
+<td align="left" width="14%" valign="top"><div>0</div></td>
+<td align="left" width="14%" valign="top"><div>root</div></td>
+<td align="left" width="14%" valign="top"><div>/root</div></td>
+<td align="left" width="14%" valign="top"><div>/bin/bash</div></td>
+</tr>
+<tr>
+<td align="left" width="14%" valign="top"><div>daemon</div></td>
+<td align="left" width="14%" valign="top"><div>x</div></td>
+<td align="left" width="14%" valign="top"><div>1</div></td>
+<td align="left" width="14%" valign="top"><div>1</div></td>
+<td align="left" width="14%" valign="top"><div>daemon</div></td>
+<td align="left" width="14%" valign="top"><div>/usr/sbin</div></td>
+<td align="left" width="14%" valign="top"><div>/bin/sh</div></td>
+</tr>
+<tr>
+<td align="left" width="14%" valign="top"><div>bin</div></td>
+<td align="left" width="14%" valign="top"><div>x</div></td>
+<td align="left" width="14%" valign="top"><div>2</div></td>
+<td align="left" width="14%" valign="top"><div>2</div></td>
+<td align="left" width="14%" valign="top"><div>bin</div></td>
+<td align="left" width="14%" valign="top"><div>/bin</div></td>
+<td align="left" width="14%" valign="top"><div>/bin/sh</div></td>
+</tr>
+<tr>
+<td align="left" width="14%" valign="top"><div>sys</div></td>
+<td align="left" width="14%" valign="top"><div>x</div></td>
+<td align="left" width="14%" valign="top"><div>3</div></td>
+<td align="left" width="14%" valign="top"><div>3</div></td>
+<td align="left" width="14%" valign="top"><div>sys</div></td>
+<td align="left" width="14%" valign="top"><div>/dev</div></td>
+<td align="left" width="14%" valign="top"><div>/bin/sh</div></td>
+</tr>
+<tr>
+<td align="left" width="14%" valign="top"><div>sync</div></td>
+<td align="left" width="14%" valign="top"><div>x</div></td>
+<td align="left" width="14%" valign="top"><div>4</div></td>
+<td align="left" width="14%" valign="top"><div>65534</div></td>
+<td align="left" width="14%" valign="top"><div>sync</div></td>
+<td align="left" width="14%" valign="top"><div>/bin</div></td>
+<td align="left" width="14%" valign="top"><div>/bin/sync</div></td>
+</tr>
+<tr>
+<td align="left" width="14%" valign="top"><div>games</div></td>
+<td align="left" width="14%" valign="top"><div>x</div></td>
+<td align="left" width="14%" valign="top"><div>5</div></td>
+<td align="left" width="14%" valign="top"><div>60</div></td>
+<td align="left" width="14%" valign="top"><div>games</div></td>
+<td align="left" width="14%" valign="top"><div>/usr/games</div></td>
+<td align="left" width="14%" valign="top"><div>/bin/sh</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">[width="70%",format="dsv"]
+|====================================
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+bin:x:2:2:bin:/bin:/bin/sh
+sys:x:3:3:sys:/dev:/bin/sh
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/bin/sh
+|====================================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="80%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 6. </b>Horizontal and vertical source data</caption>
+<thead>
+<tr>
+<th align="left" width="17%" valign="top">Date </th>
+<th align="center" width="11%" valign="top">Duration </th>
+<th align="center" width="11%" valign="top">Avg HR </th>
+<th align="left" width="58%" valign="top">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" width="17%" valign="top"><div>22-Aug-08</div></td>
+<td align="center" width="11%" valign="top"><div>10:24</div></td>
+<td align="center" width="11%" valign="top"><div>157</div></td>
+<td align="left" width="58%" valign="top"><div>Worked out MSHR (max sustainable heart rate) by going hard
+for this interval.</div></td>
+</tr>
+<tr>
+<td align="left" width="17%" valign="top"><div>22-Aug-08</div></td>
+<td align="center" width="11%" valign="top"><div>23:03</div></td>
+<td align="center" width="11%" valign="top"><div>152</div></td>
+<td align="left" width="58%" valign="top"><div>Back-to-back with previous interval.</div></td>
+</tr>
+<tr>
+<td align="left" width="17%" valign="top"><div>24-Aug-08</div></td>
+<td align="center" width="11%" valign="top"><div>40:00</div></td>
+<td align="center" width="11%" valign="top"><div>145</div></td>
+<td align="left" width="58%" valign="top"><div>Moderately hard interspersed with 3x 3min intervals (2min
+hard + 1min really hard taking the HR up to 160).</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Short cells can be entered horizontally, longer cells vertically.  The
+default behavior is to strip leading and trailing blank lines within a
+cell. These characteristics aid readability and data entry.</p>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">.Windtrainer workouts
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Date |Duration |Avg HR |Notes
+
+|22-Aug-08 |10:24 | 157 |
+Worked out MSHR (max sustainable heart rate) by going hard
+for this interval.
+
+|22-Aug-08 |23:03 | 152 |
+Back-to-back with previous interval.
+
+|24-Aug-08 |40:00 | 145 |
+Moderately hard interspersed with 3x 3min intervals (2min
+hard + 1min really hard taking the HR up to 160).
+
+|=========================================================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 7. </b>Default and verse styles</caption>
+<thead>
+<tr>
+<th align="left" width="50%" valign="top">Default paragraphs </th>
+<th align="center" width="50%" valign="top">Centered verses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" width="50%" valign="top"><div>Per id.</div>
+<div>Consul <strong>necessitatibus</strong> per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</div>
+<div>Consul <strong>necessitatibus</strong> per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</div></td>
+<td align="center" width="50%" valign="top"><pre style="font-family: inherit;">Per id.
+
+Consul <strong>necessitatibus</strong> per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+Consul <strong>necessitatibus</strong> per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</pre></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">[cols=",^v",options="header"]
+|===================================
+|Default paragraphs |Centered verses
+2*|Per id.
+
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+|===================================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="50%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 8. </b>Horizontal and vertial headings</caption>
+<thead>
+<tr>
+<th align="left" width="20%" valign="top">      </th>
+<th align="left" width="20%" valign="top">West </th>
+<th align="left" width="20%" valign="top">Central </th>
+<th align="left" width="20%" valign="top">East </th>
+<th align="left" width="20%" valign="top"> Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" width="20%" valign="top"><p><strong>Q1</strong></p></td>
+<td align="left" width="20%" valign="top"><div>270</div></td>
+<td align="left" width="20%" valign="top"><div>292</div></td>
+<td align="left" width="20%" valign="top"><div>342</div></td>
+<td align="left" width="20%" valign="top"><div>904</div></td>
+</tr>
+<tr>
+<td align="left" width="20%" valign="top"><p><strong>Q2</strong></p></td>
+<td align="left" width="20%" valign="top"><div>322</div></td>
+<td align="left" width="20%" valign="top"><div>276</div></td>
+<td align="left" width="20%" valign="top"><div>383</div></td>
+<td align="left" width="20%" valign="top"><div>981</div></td>
+</tr>
+<tr>
+<td align="left" width="20%" valign="top"><p><strong>Q3</strong></p></td>
+<td align="left" width="20%" valign="top"><div>298</div></td>
+<td align="left" width="20%" valign="top"><div>252</div></td>
+<td align="left" width="20%" valign="top"><div>274</div></td>
+<td align="left" width="20%" valign="top"><div>824</div></td>
+</tr>
+<tr>
+<td align="left" width="20%" valign="top"><p><strong>Q4</strong></p></td>
+<td align="left" width="20%" valign="top"><div>344</div></td>
+<td align="left" width="20%" valign="top"><div>247</div></td>
+<td align="left" width="20%" valign="top"><div>402</div></td>
+<td align="left" width="20%" valign="top"><div>993</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">.Horizontal and vertial headings
+[cols="h,4*",options="header",width="50%"]
+|==================================
+|      |West |Central |East | Total
+|Q1    |270  |292     |342  | 904
+|Q2    |322  |276     |383  | 981
+|Q3    |298  |252     |274  | 824
+|Q4    |344  |247     |402  | 993
+|==================================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="cols"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 9. </b>AsciiDoc style in first column, Literal in second</caption>
+<thead>
+<tr>
+<th align="left" width="50%" valign="top">Output markup </th>
+<th align="left" width="50%" valign="top">AsciiDoc source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" width="50%" valign="top"><div><p>Consul <strong>necessitatibus</strong> per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</pre>
+</td></tr>
+</table>
+<p><b>Code filter example</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" cellpadding="10"><tr><td></td></tr></table>
+<ul>
+<li>
+Lorem ipsum dolor sit amet,
+  consectetuer adipiscing elit.
+<ul>
+<li>
+Fusce euismod commodo velit.
+</li>
+<li>
+Qui in magna commodo, est labitur
+    dolorum an. Est ne magna primis
+    adolescens. Sit munere ponderum
+    dignissim et. Minim luptatum et vel.
+</li>
+<li>
+Vivamus fringilla mi eu lacus.
+</li>
+<li>
+Donec eget arcu bibendum nunc
+    consequat lobortis.
+</li>
+</ul>
+</li>
+<li>
+Nulla porttitor vulputate libero.
+<ol type="1">
+<li>
+Fusce euismod commodo velit.
+</li>
+<li>
+Vivamus fringilla mi eu lacus.
+</li>
+</ol>
+</li>
+</ul></div></td>
+<td align="left" width="50%" valign="top"><pre><code>Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+-----------------------------------
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+-----------------------------------
+
+.Code filter example
+[source,python]
+-----------------------------------
+''' A multi-line
+    comment.'''
+def sub_word(mo):
+    ''' Single line comment.'''
+    word = mo.group('word')
+    if word in keywords[language]:
+        return quote + word + quote
+    else:
+        return word
+-----------------------------------
+
+- Lorem ipsum dolor sit amet,
+  consectetuer adipiscing elit.
+  * Fusce euismod commodo velit.
+  * Qui in magna commodo, est labitur
+    dolorum an. Est ne magna primis
+    adolescens. Sit munere ponderum
+    dignissim et. Minim luptatum et vel.
+  * Vivamus fringilla mi eu lacus.
+  * Donec eget arcu bibendum nunc
+    consequat lobortis.
+- Nulla porttitor vulputate libero.
+  . Fusce euismod commodo velit.
+  . Vivamus fringilla mi eu lacus.</code></pre></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">[cols="asciidoc,literal",options="header",grid="cols"]
+|==================================
+|Output markup |AsciiDoc source
+2*|
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+-----------------------------------
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+-----------------------------------
+
+.Code filter example
+[source,python]
+-----------------------------------
+''' A multi-line
+    comment.'''
+def sub_word(mo):
+   ''' Single line comment.'''
+    word = mo.group('word')
+    if word in keywords[language]:
+        return quote + word + quote
+    else:
+        return word
+-----------------------------------
+
+- Lorem ipsum dolor sit amet,
+  consectetuer adipiscing elit.
+  * Fusce euismod commodo velit.
+  * Qui in magna commodo, est labitur
+    dolorum an. Est ne magna primis
+    adolescens. Sit munere ponderum
+    dignissim et. Minim luptatum et vel.
+  * Vivamus fringilla mi eu lacus.
+  * Donec eget arcu bibendum nunc
+    consequat lobortis.
+- Nulla porttitor vulputate libero.
+  . Fusce euismod commodo velit.
+  . Vivamus fringilla mi eu lacus.
+
+|==================================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 10. </b>Cell containing lots of example markup elements</caption>
+<tbody>
+<tr>
+<td align="left" width="100%" valign="top"><div><em>URLs</em>:
+<a href="http://www.methods.co.nz/asciidoc/">The AsciiDoc home page</a>,
+<a href="http://www.methods.co.nz/asciidoc/">http://www.methods.co.nz/asciidoc/</a>,
+<a href="mailto:joe.bloggs@foobar.com">email Joe Bloggs</a>,
+<a href="mailto:joe.bloggs@foobar.com">joe.bloggs@foobar.com</a>,
+<a href="callto:joe.bloggs">joe.bloggs</a>.</div>
+<div><em>Link</em>: See <a href="#X1">AsciiDoc source</a>.</div>
+<div><em>Emphasized text</em>, <strong>Strong text</strong>, <code>Monospaced text</code>, &#8220;Quoted text&#8221;.</div>
+<div><em>Subscripts and superscripts</em>: e<sup>&#960;i</sup>+1 = 0. H<sub>2</sub>O and x<sup>10</sup>.
+Some <sup>super text</sup> and <sub>some sub text</sub></div>
+<div><em>Replacements</em>: &#169; copyright, &#8482; trademark, &#174; registered trademark,&#8201;&#8212;&#8201;em dash, &#8230; ellipsis, &#8594; right arrow, &#8592; left arrow, &#8658; right
+double arrow, &#8656; left double arrow.</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<a name="X1"></a>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">|====================================================================
+|'URLs':
+http://www.methods.co.nz/asciidoc/[The AsciiDoc home page],
+http://www.methods.co.nz/asciidoc/,
+mailto:joe.bloggs@foobar.com[email Joe Bloggs],
+joe.bloggs@foobar.com,
+callto:joe.bloggs[].
+
+'Link': See &lt;&lt;X1,AsciiDoc source&gt;&gt;.
+
+'Emphasized text', *Strong text*, +Monospaced text+, ``Quoted text''.
+
+'Subscripts and superscripts': e^{amp}#960;i^+1 = 0. H~2~O and x^10^.
+Some ^super text^ and ~some sub text~
+
+'Replacements': (C) copyright, (TM) trademark, (R) registered trademark,
+-- em dash, ... ellipsis, -&gt; right arrow, &lt;- left arrow, =&gt; right
+double arrow, &lt;= left double arrow.
+|====================================================================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="75%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 11. </b>Nested table</caption>
+<tbody>
+<tr>
+<td align="left" width="33%" valign="top"><div>Normal cell</div></td>
+<td align="left" width="66%" valign="top"><div><p>Cell with nested table</p>
+<div>
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<tbody>
+<tr>
+<td align="left" width="66%" valign="top"><div>Nested table cell 1</div></td>
+<td align="left" width="33%" valign="top"><div>Nested table cell 2</div></td>
+</tr>
+</tbody>
+</table>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">[width="75%",cols="1,2a"]
+|==============================================
+|Normal cell
+
+|Cell with nested table
+
+[cols="2,1"]
+!==============================================
+!Nested table cell 1 !Nested table cell 2
+!==============================================
+
+|==============================================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="25%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 12. </b>Spans, alignments and styles</caption>
+<tbody>
+<tr>
+<td align="left" width="25%" valign="top"><div><em>1</em></div></td>
+<td align="right" width="25%" valign="top"><div><strong>2</strong></div></td>
+<td align="center" width="25%" valign="top"><div>3</div></td>
+<td align="right" width="25%" valign="top"><div><strong>4</strong></div></td>
+</tr>
+<tr>
+<td align="center" width="25%" valign="top"><div><em>5</em></div></td>
+<td colspan="2" rowspan="2" align="center" width="25%" valign="middle"><div><code>6</code></div></td>
+<td rowspan="3" align="left" width="25%" valign="bottom"><div><code>7</code></div></td>
+</tr>
+<tr>
+<td align="center" width="25%" valign="top"><div><em>8</em></div></td>
+</tr>
+<tr>
+<td align="left" width="25%" valign="top"><div><em>9</em></div></td>
+<td colspan="2" align="right" width="25%" valign="top"><div><code>10</code></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">.Spans, alignments and styles
+[cols="e,m,^,&gt;s",width="25%"]
+|================
+|1 &gt;s|2 |3 |4
+^|5 2.2+^.^|6 .3+&lt;.&gt;m|7
+^|8
+|9 2+&gt;|10
+|================</pre>
+</td></tr>
+</table>
+<div>
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 13. </b>Three panes</caption>
+<tbody>
+<tr>
+<td align="left" width="33%" valign="top"><div><h3><a name="_top_left_pane"></a>Top Left Pane</h3>
+<p>Consul <strong>necessitatibus</strong> per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</p>
+<p>Consul <strong>necessitatibus</strong> per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</p></div></td>
+<td rowspan="2" align="left" width="66%" valign="top"><div><h3><a name="_right_pane"></a>Right Pane</h3>
+<p>Consul <strong>necessitatibus</strong> per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</pre>
+</td></tr>
+</table>
+<p><b>Code filter example</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" cellpadding="10"><tr><td></td></tr></table>
+<ul>
+<li>
+Lorem ipsum dolor sit amet,
+  consectetuer adipiscing elit.
+<ul>
+<li>
+Fusce euismod commodo velit.
+</li>
+<li>
+Qui in magna commodo, est labitur
+    dolorum an. Est ne magna primis
+    adolescens. Sit munere ponderum
+    dignissim et. Minim luptatum et vel.
+</li>
+<li>
+Vivamus fringilla mi eu lacus.
+</li>
+<li>
+Donec eget arcu bibendum nunc
+    consequat lobortis.
+</li>
+</ul>
+</li>
+<li>
+Nulla porttitor vulputate libero.
+<ol type="1">
+<li>
+Fusce euismod commodo velit.
+</li>
+<li>
+Vivamus fringilla mi eu lacus.
+</li>
+</ol>
+</li>
+</ul></div></td>
+</tr>
+<tr>
+<td align="left" width="33%" valign="top"><div><h3><a name="_bottom_left_pane"></a>Bottom Left Pane</h3>
+<p>Consul <strong>necessitatibus</strong> per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</p>
+<p>Consul <strong>necessitatibus</strong> per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.</p>
+<ul>
+<li>
+Lorem ipsum dolor sit amet,
+  consectetuer adipiscing elit.
+<ul>
+<li>
+Fusce euismod commodo velit.
+</li>
+<li>
+Qui in magna commodo, est labitur
+    dolorum an. Est ne magna primis
+    adolescens. Sit munere ponderum
+    dignissim et. Minim luptatum et vel.
+</li>
+<li>
+Vivamus fringilla mi eu lacus.
+</li>
+<li>
+Donec eget arcu bibendum nunc
+    consequat lobortis.
+</li>
+</ul>
+</li>
+<li>
+Nulla porttitor vulputate libero.
+<ol type="1">
+<li>
+Fusce euismod commodo velit.
+</li>
+<li>
+Vivamus fringilla mi eu lacus.
+</li>
+</ol>
+</li>
+</ul></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">.Three panes
+[cols="a,2a"]
+|==================================
+|
+[float]
+Top Left Pane
+~~~~~~~~~~~~~
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+.2+|
+[float]
+Right Pane
+~~~~~~~~~~
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+-----------------------------------
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+-----------------------------------
+
+.Code filter example
+[source,python]
+-----------------------------------
+''' A multi-line
+    comment.'''
+def sub_word(mo):
+    ''' Single line comment.'''
+    word = mo.group('word')
+    if word in keywords[language]:
+        return quote + word + quote
+    else:
+        return word
+-----------------------------------
+
+- Lorem ipsum dolor sit amet,
+  consectetuer adipiscing elit.
+  * Fusce euismod commodo velit.
+  * Qui in magna commodo, est labitur
+    dolorum an. Est ne magna primis
+    adolescens. Sit munere ponderum
+    dignissim et. Minim luptatum et vel.
+  * Vivamus fringilla mi eu lacus.
+  * Donec eget arcu bibendum nunc
+    consequat lobortis.
+- Nulla porttitor vulputate libero.
+  . Fusce euismod commodo velit.
+  . Vivamus fringilla mi eu lacus.
+
+|
+[float]
+Bottom Left Pane
+~~~~~~~~~~~~~~~~
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+- Lorem ipsum dolor sit amet,
+  consectetuer adipiscing elit.
+  * Fusce euismod commodo velit.
+  * Qui in magna commodo, est labitur
+    dolorum an. Est ne magna primis
+    adolescens. Sit munere ponderum
+    dignissim et. Minim luptatum et vel.
+  * Vivamus fringilla mi eu lacus.
+  * Donec eget arcu bibendum nunc
+    consequat lobortis.
+- Nulla porttitor vulputate libero.
+  . Fusce euismod commodo velit.
+  . Vivamus fringilla mi eu lacus.
+
+|==================================</pre>
+</td></tr>
+</table>
+<hr>
+<h2><a name="_combinations_of_em_align_em_em_frame_em_em_grid_em_em_valign_em_and_em_halign_em_attributes"></a>Combinations of <em>align</em>, <em>frame</em>, <em>grid</em>, <em>valign</em> and <em>halign</em> attributes</h2>
+<div>
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<thead>
+<tr>
+<th align="left" width="20%" valign="top"></th>
+<th align="left" width="20%" valign="top">frame </th>
+<th align="left" width="20%" valign="top"> grid </th>
+<th align="left" width="20%" valign="top">valign </th>
+<th align="left" width="20%" valign="top">halign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" width="20%" valign="top"><pre style="font-family: inherit;">&nbsp;
+&nbsp;
+&nbsp;</pre></td>
+<td align="left" width="20%" valign="top"><div>all</div></td>
+<td align="left" width="20%" valign="top"><div>all</div></td>
+<td align="left" width="20%" valign="top"><div>top</div></td>
+<td align="left" width="20%" valign="top"><div>left</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">:frame: all
+:grid: all
+:halign: left
+:valign: top
+
+[options="header"]
+|====
+||frame | grid |valign |halign
+v|&amp;nbsp;
+&amp;nbsp;
+&amp;nbsp;
+|{frame} | {grid} |{valign} |{halign}
+|====</pre>
+</td></tr>
+</table>
+<div>
+<table rules="rows"
+width="50%"
+frame="vsides"
+cellspacing="0" cellpadding="4">
+<caption><b>Table 14. </b>Table test</caption>
+<thead>
+<tr>
+<th align="center" width="20%" valign="middle"></th>
+<th align="center" width="20%" valign="middle">frame </th>
+<th align="center" width="20%" valign="middle"> grid </th>
+<th align="center" width="20%" valign="middle">valign </th>
+<th align="center" width="20%" valign="middle">halign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" width="20%" valign="middle"><pre style="font-family: inherit;">&nbsp;
+&nbsp;
+&nbsp;</pre></td>
+<td align="center" width="20%" valign="middle"><div>sides</div></td>
+<td align="center" width="20%" valign="middle"><div>rows</div></td>
+<td align="center" width="20%" valign="middle"><div>middle</div></td>
+<td align="center" width="20%" valign="middle"><div>center</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">:frame: sides
+:grid: rows
+:halign: center
+:valign: middle
+
+.Table test
+[width="50%",options="header"]
+|====
+||frame | grid |valign |halign
+v|&amp;nbsp;
+&amp;nbsp;
+&amp;nbsp;
+|{frame} | {grid} |{valign} |{halign}
+|====</pre>
+</td></tr>
+</table>
+<div align="right">
+<table rules="cols"
+width="50%"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<thead>
+<tr>
+<th align="right" width="20%" valign="bottom"></th>
+<th align="right" width="20%" valign="bottom">frame </th>
+<th align="right" width="20%" valign="bottom"> grid </th>
+<th align="right" width="20%" valign="bottom">valign </th>
+<th align="right" width="20%" valign="bottom">halign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right" width="20%" valign="bottom"><pre style="font-family: inherit;">&nbsp;
+&nbsp;
+&nbsp;</pre></td>
+<td align="right" width="20%" valign="bottom"><div>topbot</div></td>
+<td align="right" width="20%" valign="bottom"><div>cols</div></td>
+<td align="right" width="20%" valign="bottom"><div>bottom</div></td>
+<td align="right" width="20%" valign="bottom"><div>right</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">:frame: topbot
+:grid: cols
+:halign: right
+:valign: bottom
+
+[align="right",width="50%",options="header"]
+|====
+||frame | grid |valign |halign
+v|&amp;nbsp;
+&amp;nbsp;
+&amp;nbsp;
+|{frame} | {grid} |{valign} |{halign}
+|====</pre>
+</td></tr>
+</table>
+<div align="center">
+<table rules="none"
+width="50%"
+frame="void"
+cellspacing="0" cellpadding="4">
+<thead>
+<tr>
+<th align="left" width="20%" valign="top"></th>
+<th align="left" width="20%" valign="top">frame </th>
+<th align="left" width="20%" valign="top"> grid </th>
+<th align="left" width="20%" valign="top">valign </th>
+<th align="left" width="20%" valign="top">halign</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" width="20%" valign="top"><pre style="font-family: inherit;">&nbsp;
+&nbsp;
+&nbsp;</pre></td>
+<td align="left" width="20%" valign="top"><div>none</div></td>
+<td align="left" width="20%" valign="top"><div>none</div></td>
+<td align="left" width="20%" valign="top"><div>top</div></td>
+<td align="left" width="20%" valign="top"><div>left</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><b>AsciiDoc source</b></p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">:frame: none
+:grid: none
+:halign: left
+:valign: top
+
+[align="center",width="50%",options="header"]
+|====
+||frame | grid |valign |halign
+v|&amp;nbsp;
+&amp;nbsp;
+&amp;nbsp;
+|{frame} | {grid} |{valign} |{halign}
+|====</pre>
+</td></tr>
+</table>
+<p></p>
+<p></p>
+<hr><p><small>
+Last updated 2013-01-10 14:56:24 MST
+</small></p>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="AsciiDoc 8.6.8">
+<title>LaTeX Filter</title>
+</head>
+<body>
+<h1>LaTeX Filter</h1>
+<p>
+</p>
+<a name="preamble"></a>
+<p>The AsciiDoc distribution includes a LaTeX filter that translates
+LaTeX source to PNG image which is automatically inserted into the
+AsciiDoc output document. Although it can accept any LaTeX source, the
+primary use is to render mathematical formulae (see the examples
+below).  The filter implements the <em>latex</em> Listing block and Paragraph
+styles.</p>
+<p>This LaTeX paragraph:</p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">[latex]
+$y = \int_0^\infty \gamma^2 \cos(x) dx$</pre>
+</td></tr>
+</table>
+<p>Renders:</p>
+<div>
+<img src="latex-filter__1.png" style="border-width: 0;" alt="latex-filter__1.png">
+</div>
+<p>This LaTeX block:</p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">["latex","latex1.png",align="center"]
+---------------------------------------------------------------------
+$\displaystyle{ V_i = C_0 - C_3
+\frac{C_1\cos(\theta_i+C_3)}{C_4+C_1\cos(\theta_i+C_2)} }$
+---------------------------------------------------------------------</pre>
+</td></tr>
+</table>
+<p>Renders:</p>
+<div align="center">
+<img src="latex1.png" style="border-width: 0;" alt="latex1.png">
+</div>
+<p>This LaTeX block:</p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">.LaTeX filter example
+[latex]
+["latex","latex3.png"]
+---------------------------------------------------------------------
+\begin{equation}
+\Re{z} =\frac{n\pi \dfrac{\theta +\psi}{2}}{
+\left(\dfrac{\theta +\psi}{2}\right)^2 + \left( \dfrac{1}{2}
+\log \left\lvert\dfrac{B}{A}\right\rvert\right)^2}.
+\end{equation}
+
+\begin{equation}
+\boxed{\eta \leq C(\delta(\eta) +\Lambda_M(0,\delta))}
+\end{equation}
+
+\begin{equation}\label{first}
+a=b+c
+\end{equation}
+
+\begin{subequations}\label{grp}
+\begin{align}
+a&amp;=b+c\label{second}\\
+d&amp;=e+f+g\label{third}\\
+h&amp;=i+j\label{fourth}
+\end{align}
+\end{subequations}
+---------------------------------------------------------------------</pre>
+</td></tr>
+</table>
+<p>Renders:</p>
+<div>
+<img src="latex-filter__2.png" style="border-width: 0;" alt="latex-filter__2.png">
+<p><b>Figure 1. </b>LaTeX filter example</p>
+</div>
+<p>This LaTeX paragraph:</p>
+<table border="0" bgcolor="#e8e8e8" width="100%" style="margin:0.2em 0;">
+<tr><td style="padding:0.5em;">
+<pre style="margin:0; padding:0;">.A LaTeX table
+[latex]
+\begin{tabular}{c r @{.} l}
+Pi expression &amp;
+\multicolumn{2}{c}{Value} \\
+\hline
+$\pi$ &amp; 3&amp;1416 \\
+$\pi^{\pi}$ &amp; 36&amp;46 \\
+$(\pi^{\pi})^{\pi}$ &amp; 80662&amp;7 \\
+\end{tabular}</pre>
+</td></tr>
+</table>
+<p>Renders:</p>
+<div>
+<img src="latex-filter__3.png" style="border-width: 0;" alt="latex-filter__3.png">
+<p><b>Figure 2. </b>A LaTeX table</p>
+</div>
+<hr>
+<h2><a name="_using_the_filter"></a>Using the Filter</h2>
+<ul>
+<li>
+The LaTeX filter is invoked by setting the Listing block or
+  Paragraph style (the first positional block attribute) to <em>latex</em>.
+</li>
+<li>
+The second positional attribute (named <em>target</em> is optional, it sets
+  the name of the generated PNG image file. If this is not supplied a
+  file name like <code>{docname}__{target-number}.png</code> is synthesised
+  (where <code>{docname}</code> is the document file name and <code>{target-number}</code>
+  is an integer number.
+</li>
+<li>
+The third positional attribute, named <em>dpi</em>, is also optional; it is
+  an integer number that sets the output resolution in dots per inch.
+</li>
+</ul>
+<p>Because the LaTeX images are rendered using the image block templates
+you can also use the optional named image block attributes (see
+<a href="userguide.html#X55">Image macro attributes</a> in the AsciiDoc User
+Guide).</p>
+<table frame="void" style="margin:0.2em 0;">
+<tr valign="top"><td style="padding:0.5em;"><p><b><u>Tip</u></b></p></td>
+<td style="border-left:3px solid #e8e8e8; padding:0.5em;">
+<p>You can also change the image size using the following LaTeX commands:</p>
+<pre style="padding:0.5em; color:gray;">\tiny
+\scriptsize
+\footnotesize
+\small
+\normalsize
+\large
+\Large
+\LARGE
+\huge</pre>
+<p>For example:</p>
+<pre style="padding:0.5em; color:gray;">[latex]
+\Large $y = \int_0^\infty \gamma^2 \cos(x) dx$</pre>
+<p>The <code>\Large</code> command is outside the <code>$</code> math delimiters.</p>
+</td></tr></table>
+<p>The filter (<code>./filters/latex/latex2png.py</code>) can be used outside
+AsciiDoc to convert LaTeX source to PNG images.</p>
+<p>Execute the following command to see how to use it:</p>
+<pre style="padding:0.5em; color:gray;">$ ./filters/latex/latex2png.py --help</pre>
+<hr>
+<h2><a name="_limitations"></a>Limitations</h2>
+<ul>
+<li>
+The <code>asciidoc(1)</code> input and output files cannot both be <code>-</code> (stdin
+  and stdout), either the input or output files (or both) must be a
+  named file.
+</li>
+</ul>
+<hr>
+<h2><a name="_installation"></a>Installation</h2>
+<p>In addition to AsciiDoc you will need to have <code>latex(1)</code> and
+<code>dvipng(1)</code> installed.</p>
+<p></p>
+<p></p>
+<hr><p><small>
+Last updated 2013-01-10 14:56:24 MST
+</small></p>
+</body>
+</html>

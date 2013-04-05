@@ -427,9 +427,9 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/Users/moi/development/c4asciidoc'
+ac_pwd='/Users/traviskirton/development/c4asciidoc'
 srcdir='.'
-INSTALL='/opt/local/bin/ginstall -c'
+INSTALL='/usr/bin/install -c'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
 ac_need_defaults=:
